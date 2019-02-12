@@ -22,8 +22,7 @@ import random
 import chess
 
 from definitions import INFINITE
-from evaluation.piece_square_table import PieceSquareMixin
-from evaluation.piece_values import PieceValueMixin
+from evaluation.mixins import PieceSquareMixin, PieceValueMixin
 from search.alphabeta import AlphaBetaMixin
 
 
