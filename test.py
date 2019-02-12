@@ -20,6 +20,8 @@ class EvaluationTest(unittest.TestCase):
                       -PIECE_VALUES[chess.PAWN])
         self.run_test(PieceValueMixin, "8/5pr1/8/8/8/8/8/8 w - - 0 1",
                       -PIECE_VALUES[chess.PAWN] - PIECE_VALUES[chess.ROOK])
+        self.run_test(PieceValueMixin, "8/5pr1/8/8/8/8/8/8 b - - 0 1",
+                      PIECE_VALUES[chess.PAWN] + PIECE_VALUES[chess.ROOK])
 
     def test_piece_square_table_eval(self):
         self.run_test(PieceSquareMixin, chess.STARTING_FEN,
@@ -31,6 +33,9 @@ class EvaluationTest(unittest.TestCase):
         self.run_test(PieceSquareMixin, "8/5p2/8/8/8/8/r7/8 w - - 0 1",
                       -PIECE_SQUARE_TABLES[chess.PAWN][chess.G2]
                       - PIECE_SQUARE_TABLES[chess.ROOK][chess.A7])
+        self.run_test(PieceSquareMixin, "8/5p2/8/8/8/8/r7/8 b - - 0 1",
+                      PIECE_SQUARE_TABLES[chess.PAWN][chess.G2]
+                      + PIECE_SQUARE_TABLES[chess.ROOK][chess.A7])
 
 
 if __name__ == "__main__":
