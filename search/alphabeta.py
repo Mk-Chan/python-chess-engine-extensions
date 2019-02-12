@@ -95,6 +95,10 @@ class AlphaBetaMixin(BaseSearch):
             # Five-fold repetition is a draw.
             return 0, []
 
+        if self.stop_signal():
+            # We met a stop condition, abort and return.
+            return 0, []
+
         # Sort moves according to a given policy to maximize beta-cutoffs.
         legal_moves = sorted(self.board.legal_moves, reverse=True,
                              key=lambda m: move_sorting_policy(self.board, m))

@@ -17,13 +17,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
-from abc import ABC
-
 import chess
 
 
-class BaseSearch(ABC):
+class BaseSearch(object):
     def __init__(self, board: chess.Board):
         if board is None:
             raise ValueError('board must be defined')
         self.board = board
+
+    def stop_signal(self):
+        return False

@@ -66,6 +66,10 @@ class MinimaxMixin(BaseSearch):
             # Five-fold repetition is a draw.
             return 0, []
 
+        if self.stop_signal():
+            # We met a stop condition, abort and return.
+            return 0, []
+
         best_value = -INFINITE
         pv = []
         for move in self.board.legal_moves:
