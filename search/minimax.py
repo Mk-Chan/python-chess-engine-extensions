@@ -78,6 +78,12 @@ class MinimaxMixin(BaseSearch):
             search_value = -search_value
             self.board.pop()
 
+            if self.stop_signal():
+                # We got a stop signal either in the child node or now,
+                # continue unwinding by returning without updating any
+                # further.
+                return 0, []
+
             if search_value > best_value:
                 best_value = search_value
                 pv = [move] + child_pv

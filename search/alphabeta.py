@@ -115,6 +115,12 @@ class AlphaBetaMixin(BaseSearch):
 
             self.board.pop()
 
+            if self.stop_signal():
+                # We got a stop signal either in the child node or now,
+                # continue unwinding by returning without updating any
+                # further.
+                return 0, []
+
             if child_score >= beta:
                 # Beta-cutoff. This was a CUT-node.
                 return beta, []
