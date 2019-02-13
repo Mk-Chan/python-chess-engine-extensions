@@ -53,7 +53,7 @@ class PieceSquareMixin(BaseEvaluation):
     def evaluate(self):
         parent_score = super(PieceSquareMixin, self).evaluate()
         score = 0
-        for piece_type in chess.PIECE_TYPES[:-1]:
+        for piece_type in chess.PIECE_TYPES:
             for square in self.board.pieces(piece_type, chess.WHITE):
                 score += PIECE_SQUARE_TABLES[piece_type][square]
             for square in self.board.pieces(piece_type, chess.BLACK):
