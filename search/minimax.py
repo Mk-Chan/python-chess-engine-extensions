@@ -66,7 +66,7 @@ class MinimaxMixin(BaseSearch):
             # Five-fold repetition is a draw.
             return 0, []
 
-        if self.stop_signal():
+        if ply > 0 and self.stop_signal():
             # We met a stop condition, abort and return.
             return 0, []
 
@@ -78,7 +78,7 @@ class MinimaxMixin(BaseSearch):
             search_value = -search_value
             self.board.pop()
 
-            if self.stop_signal():
+            if ply > 0 and self.stop_signal():
                 # We got a stop signal either in the child node or now,
                 # continue unwinding by returning without updating any
                 # further.

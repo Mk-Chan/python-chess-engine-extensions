@@ -95,7 +95,7 @@ class AlphaBetaMixin(BaseSearch):
             # Five-fold repetition is a draw.
             return 0, []
 
-        if self.stop_signal():
+        if ply > 0 and self.stop_signal():
             # We met a stop condition, abort and return.
             return 0, []
 
@@ -115,7 +115,7 @@ class AlphaBetaMixin(BaseSearch):
 
             self.board.pop()
 
-            if self.stop_signal():
+            if ply > 0 and self.stop_signal():
                 # We got a stop signal either in the child node or now,
                 # continue unwinding by returning without updating any
                 # further.
